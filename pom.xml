@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+ 
+    <groupId>com.imgdownloader</groupId>
+    <artifactId>imgdownloader</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+ 
+    <name>imgdownloader</name>
+    <description> A template of Java Project for Future Program at Devoeam</description>
+    <url>https://www.devoteam.com</url>
+
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+        <junit.jupiter.version>5.7.1</junit.jupiter.version>
+        <assertj.version>3.18.1</assertj.version>
+        <mockitoinline.version>3.8.0</mockitoinline.version>
+        <wiremock.version>2.27.2</wiremock.version>
+    </properties>
+ 
+    <dependencies>
+        <dependency>
+  <!-- jsoup HTML parser library @ https://jsoup.org/ -->
+  <groupId>org.jsoup</groupId>
+  <artifactId>jsoup</artifactId>
+  <version>1.15.4</version>
+</dependency>
+
+    </dependencies>
+ 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+        </plugins>
+    </build>
+
+  </project>
