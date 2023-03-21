@@ -1,17 +1,14 @@
 package com.imgdownloader;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.jsoup.nodes.Element;
+import java.util.Set;
 
 public class App {
 
-  public static void main(String[] args) throws IOException {
-    ImgDownloader downloader = new ImgDownloader("https://nextcloud.dojekon.ru/", null, null);
-    List<Element> URLs = downloader.getPageElementsByTag(downloader.getUrl(), "a");
-    for (Element element : URLs) {
-      System.out.println(element.attr("href"));
+  public static void main(String[] args) {
+    ImgDownloader downloader = new ImgDownloader("https://vk.com/", null, null);
+    Set<String> links = downloader.getImgLinks(downloader.getChildLinksFPage(downloader.getUrl()));
+    for (String string : links) {
+      System.out.println(string);
     }
   }
 }
