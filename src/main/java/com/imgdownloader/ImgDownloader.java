@@ -12,7 +12,7 @@ public class ImgDownloader {
     private String url;
     private String savePath;
     private String imgMinSize;
-
+/** */
     public ImgDownloader(String url, String savePath, String imgMinSize) {
         this.url = url;
         this.savePath = savePath;
