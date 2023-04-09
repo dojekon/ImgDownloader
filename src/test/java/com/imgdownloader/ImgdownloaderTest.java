@@ -33,9 +33,10 @@ public class ImgdownloaderTest {
     @Test
     public void testGetPageElementsByTag() {
         String url = "https://www.example.com";
+        String savePath = "C:/Users/dojekon/Documents/GitHub/img";
         String tag = "p";
         
-        ImgDownloader downloader = new ImgDownloader(url, null, 0);
+        ImgDownloader downloader = new ImgDownloader(url, savePath, 0);
         
         List<Element> elements = downloader.getPageElementsByTag(url, tag);
         
@@ -47,7 +48,8 @@ public class ImgdownloaderTest {
     @Test
     public void testGetPageLinks() {
         String url = "https://vk.com";
-        ImgDownloader downloader = new ImgDownloader(url, null, 0);
+        String savePath = "C:/Users/dojekon/Documents/GitHub/img";
+        ImgDownloader downloader = new ImgDownloader(url, savePath, 0);
 
         Set<String> links = downloader.getChildLinksFPage(downloader.getUrl());
 
@@ -61,7 +63,8 @@ public class ImgdownloaderTest {
     @Test
     public void testGetImgLinks() {
         String url = "https://browsershots.org/";
-     
+        String savePath = "C:/Users/dojekon/Documents/GitHub/img";
+        
         Set<String> expectedLinks = new HashSet<String>();
         expectedLinks.add("https://browsershots.org/static/images/logo/header_hover.png");
         expectedLinks.add("https://browsershots.org/static/images/logo/header_name.png");
@@ -69,7 +72,7 @@ public class ImgdownloaderTest {
         expectedLinks.add("https://browsershots.org/static/images/logo/header.png");
         expectedLinks.add("https://browsershots.org/static/images/cross_grey_small.gif");
 
-        ImgDownloader downloader = new ImgDownloader(url, null, 0);
+        ImgDownloader downloader = new ImgDownloader(url, savePath, 0);
         Set<String> actualLinks = downloader.getImgLinks(url);
         assertEquals(expectedLinks, actualLinks);
     }
