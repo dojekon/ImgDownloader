@@ -35,7 +35,7 @@ public class ImgdownloaderTest {
         String url = "https://www.example.com";
         String tag = "p";
         
-        ImgDownloader downloader = new ImgDownloader(url, null, null);
+        ImgDownloader downloader = new ImgDownloader(url, null, 0);
         
         List<Element> elements = downloader.getPageElementsByTag(url, tag);
         
@@ -47,7 +47,7 @@ public class ImgdownloaderTest {
     @Test
     public void testGetPageLinks() {
         String url = "https://vk.com";
-        ImgDownloader downloader = new ImgDownloader(url, null, null);
+        ImgDownloader downloader = new ImgDownloader(url, null, 0);
 
         Set<String> links = downloader.getChildLinksFPage(downloader.getUrl());
 
@@ -69,7 +69,7 @@ public class ImgdownloaderTest {
         expectedLinks.add("https://browsershots.org/static/images/logo/header.png");
         expectedLinks.add("https://browsershots.org/static/images/cross_grey_small.gif");
 
-        ImgDownloader downloader = new ImgDownloader(url, null, null);
+        ImgDownloader downloader = new ImgDownloader(url, null, 0);
         Set<String> actualLinks = downloader.getImgLinks(url);
         assertEquals(expectedLinks, actualLinks);
     }
