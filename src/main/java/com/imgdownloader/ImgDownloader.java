@@ -18,8 +18,18 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import org.apache.commons.io.FileUtils;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 public class ImgDownloader {
+    private static Properties loadProperties(String filename) throws IOException {
+        Properties properties = new Properties();
+        FileInputStream inputStream = new FileInputStream(filename);
+        properties.load(inputStream);
+        inputStream.close();
+        return properties;
+    }
+    
     private String url;
     private String savePath;
     private int imgMinSize;
@@ -36,6 +46,24 @@ public class ImgDownloader {
         this.url = url;
         this.savePath = savePath;
         this.imgMinSize = imgMinSizeKB * 1024;
+    }
+
+    public ImgDownloader(String propertiesPath) {
+        try {
+            Properties properties = loadProperties(propertiesPath);
+            String url = properties.getProperty("url");
+            String savePath = properties.getProperty("savePath");
+            int imgMinSizeKB = Integer.parseInt(properties.getProperty("imgMinSizeKB"));
+            if (url == null || url.isEmpty()) {
+                throw new IllegalArgumentException("URL cannot be empty");
+            }
+            if (savePath == null || savePath.isEmpty()) {
+                throw new IllegalArgumentException("savePath cannot be empty");
+            }
+            this.url = url;
+            this.savePath = savePath;
+            this.imgMinSize = imgMinSizeKB * 1024;
+        } catch (Exception e) {}
     }
 
     String getUrl() {
